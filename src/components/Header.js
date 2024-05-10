@@ -7,6 +7,7 @@ import { MdNavigateNext } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { toogleMenu } from "./utils/appSlice";
+import { FaCamera } from "react-icons/fa";
 
 const Header = () =>{
     const dispatch = useDispatch()
@@ -20,7 +21,7 @@ const Header = () =>{
 
 
     return(
-        <div className="bg-gray-900 shadow-lg flex justify-between font-man">
+        <div className="bg-zinc-900 shadow-lg flex justify-between font-man">
             <div className="flex items-center p-2">
                 <div className="logo m-2">
                     <h1 className="font-bold text-white">secret<span className="bg-pink-500 text-white rounded-md p-1 m-1">desires</span></h1>
@@ -32,9 +33,9 @@ const Header = () =>{
 
                 <div className="flex gap-6 items-center justify-center ml-[18em]">
                     <h2 className="border-pink-400 text-sm border-b-2 flex items-center text-white cursor-pointer" onClick={()=>toogleHandler()}><span className="mr-2 "><BsChatRightDotsFill /></span>Chat</h2>   
-                    <h2 className="border-pink-400 text-sm border-b-2 flex items-center text-white cursor-pointer w-[9em]"><span className="mr-2 "><HiUsers /></span>My Characters</h2>   
-                    <h2 className="border-pink-400 text-sm border-b-2 flex items-center text-white cursor-pointer w-[9.5em]"><span className="mr-2 "><BsChatRightDotsFill /></span>Generate Images</h2>   
-                    <h2 className="border-pink-400 bg-pink-600 rounded-md p-2 text-sm border-b-2 flex items-center text-white cursor-pointer w-[11em]"><span className="mr-2 "><FaHeartCircleBolt /></span>Create Character</h2>   
+                    <h2 className="text-sm flex items-center text-white cursor-pointer w-[9em]"><span className="mr-2 "><HiUsers /></span>My Characters</h2>   
+                    <h2 className="text-sm flex items-center text-white cursor-pointer w-[9.5em]"><span className="mr-2 "><FaCamera /></span>Generate Images</h2>   
+                    <h2 className="bg-pink-600 rounded-md p-2 text-sm flex items-center text-white cursor-pointer w-[11em]"><span className="mr-2 "><FaHeartCircleBolt /></span>Create Character</h2>   
                     
 
                 </div>

@@ -12,6 +12,7 @@ import { OPENAI_KEY } from "./utils/constants";
 import { useRef } from "react";
 
 
+
 // openrouter configuration for fetching responses
 const openai = new OpenAI({
     baseURL: "https://openrouter.ai/api/v1",
@@ -64,7 +65,7 @@ const Chat = () => {
       };
 
       return (
-        <div className={`chat ${ !isMenuOpen && 'w-screen'} w-[70em] bg-gray-900 h-screen font-man overflow-y-auto`}>
+        <div className={`chat ${ !isMenuOpen && 'w-screen'} w-[70em] bg-black h-screen font-man overflow-y-auto`}>
           {responses.map((msg, index) => (
             <div key={index}>
               {renderProfile(msg.role)}
@@ -72,22 +73,20 @@ const Chat = () => {
                 className={`mess ${msg.role === 'user' ? 'bg-gray-500' : 'bg-pink-600'} w-fit mx-auto rounded flex ${msg.role === 'user' ? 'mr-4' : 'ml-4'}`}
                 ref={index === responses.length - 1 ? lastMessageRef : null}
               >
-                <p className={`text-gray-200 p-6 text-sm`}>{msg.content}</p>
+                <p className={`text-gray-200 p-4 text-sm font-semibold`}>{msg.content}</p>
               </div>
             </div>
           ))}
     
-          <div className="chatbox mt-[28rem] w-[100%] flex items-center justify-center">
-            <form className="w-[70%]" onSubmit={
-            (e)=>{e.preventDefault()}}>
+          <div className="chatbox mt-[26rem] w-[100%] flex items-center justify-center">
                 <input
                 placeholder="Type a message here..."
-                className="bg-gray-400 text-white w-[95%] p-2 mr-2 border-red-700 border-l-4 border-r-4 border-t-4 border-b-4 rounded-lg "
+                className="bg-black text-white w-[80%] p-2 mr-2 border-red-700 border-l-4 border-r-4 border-t-4 border-b-4 rounded-lg "
                 value={userInput}
                 onChange={(e) => setUserInput(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') handleSend(e); }}
                 />
-            </form>
-            <div className="cursor-pointer text-white" onClick={handleSend}><IoMdSend /></div>
+                <div className="cursor-pointer text-white" onClick={handleSend}><IoMdSend /></div>
           </div>
         </div>
       );
