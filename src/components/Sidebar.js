@@ -7,6 +7,10 @@ import { IoShareSocialSharp } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { toogleMenu } from "./utils/appSlice";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { FiTool } from "react-icons/fi";
+import { IoMdClose } from "react-icons/io";
+
 const Sidebar = () =>{
     const dispatch = useDispatch()
     const isMenuOpen = useSelector(state => state.app.isMenuOpen);
@@ -19,12 +23,20 @@ const Sidebar = () =>{
     }
 
     return(
-        <div className="relative h-screen w-[30em] bg-gray-700 border-pink-500 border-r-4 overflow-hidden ">
-            <div className="toolbar bg-black shadow-xl flex justify-between items-center h-[7%]">
+        <div className="relative h-screen w-[30em] bg-gray-700 border-pink-500 border-r-4 overflow-hidden">
+            <div className="toolbar bg-black shadow-xl flex justify-between items-center h-[7%] text-xs ">
                 <div className="p-2 flex items-center">
                     <p className="text-white w-[5em] flex items-center font-man" onClick={()=>toogleHandler()}><span className="m-1 text-white cursor-pointer"><MdNavigateBefore /></span>Chats</p>
                     <p className="font-man">img:<span className="number ml-1 text-gray-300 font-man">3</span></p>
                     <p className="ml-2 text-white font-man">msg:</p>
+                </div>
+
+                <div className="flex gap-2 m-1">
+                    <div className="text-white"><BsThreeDotsVertical/></div>
+                    <div className="text-white"><FiTool/></div>
+                    <div className="text-white"><FaEdit/></div>
+                    <div className="text-white"><IoMdClose/></div>
+
                 </div>
                 
             </div>
