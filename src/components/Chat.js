@@ -74,6 +74,7 @@ const Chat = () => {
                 ref={index === responses.length - 1 ? lastMessageRef : null}
               >
                 <p className={`text-gray-200 p-4 text-sm font-semibold`}>{msg.content}</p>
+                <div className="flex gap-2 h-[10%]"></div>
               </div>
             </div>
           ))}

@@ -8,9 +8,25 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { toogleMenu } from "./utils/appSlice";
 import { FaCamera } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useEffect } from "react";
+import { addUser, removeUser } from "./utils/userSlice";
 
 const Header = () =>{
     const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const user = useSelector(store => store.user);
+
+    const handleSignOut = () => {
+        signOut(auth)
+          .then(() => {})
+          .catch((error) => {
+            navigate("/error");
+          });
+      };
+
     const isMenuOpen = useSelector(state => state.app.isMenuOpen);
 
     const toogleHandler = ()=>{
@@ -18,6 +34,31 @@ const Header = () =>{
             dispatch(toogleMenu());
           }, 100);
     }
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+          if (user) {
+            const { uid, email, displayName, photoURL } = user;
+            dispatch(
+              addUser({
+                uid: uid,
+                email: email,
+                displayName: displayName,
+                photoURL: photoURL,
+              })
+            );
+            navigate("/browse");
+          } else {
+            dispatch(removeUser());
+            navigate("/");
+          }
+        });
+    
+        // Unsubscribe when component unmounts
+        return () => unsubscribe();
+      }, []);
+    
+
 
 
     return(
