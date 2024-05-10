@@ -27,6 +27,7 @@ const Chat = () => {
     const dispatch = useDispatch();
     const responses = useSelector((state) => state.open.responses);
     const lastMessageRef = useRef(null);
+    const isMenuOpen = useSelector(store => store.app.isMenuOpen)
   
     const handleSend = async () => {
       if (!userInput.trim()) return;
@@ -62,7 +63,7 @@ const Chat = () => {
       };
 
       return (
-        <div className="chat w-[70em] bg-gray-900 h-screen font-man overflow-y-auto">
+        <div className={`chat ${ !isMenuOpen && 'w-[100em]'} w-[70em] bg-gray-900 h-screen font-man overflow-y-auto`}>
           {responses.map((msg, index) => (
             <div key={index}>
               {renderProfile(msg.role)}
@@ -76,12 +77,15 @@ const Chat = () => {
           ))}
     
           <div className="chatbox mt-[13rem] w-[100%] flex items-center justify-center">
-            <input
-              placeholder="Type a message here..."
-              className="bg-gray-400 text-white p-2 mr-2 border-red-700 border-l-4 border-r-4 border-t-4 border-b-4 rounded-lg w-[70%]"
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-            />
+            <form className="w-[70%]" onSubmit={
+            (e)=>{e.preventDefault()}}>
+                <input
+                placeholder="Type a message here..."
+                className="bg-gray-400 text-white w-[95%] p-2 mr-2 border-red-700 border-l-4 border-r-4 border-t-4 border-b-4 rounded-lg "
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+                />
+            </form>
             <div className="cursor-pointer text-white" onClick={handleSend}><IoMdSend /></div>
           </div>
         </div>

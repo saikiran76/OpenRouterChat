@@ -19,7 +19,7 @@ const Sidebar = () =>{
     }
 
     return(
-        <div className="relative h-screen w-[30em] bg-gray-700 border-pink-500 border-r-4 ">
+        <div className="relative h-screen w-[30em] bg-gray-700 border-pink-500 border-r-4 overflow-hidden ">
             <div className="toolbar bg-black shadow-xl flex justify-between items-center h-[7%]">
                 <div className="p-2 flex items-center">
                     <p className="text-white w-[5em] flex items-center font-man" onClick={()=>toogleHandler()}><span className="m-1 text-white cursor-pointer"><MdNavigateBefore /></span>Chats</p>
