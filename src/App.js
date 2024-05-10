@@ -1,13 +1,14 @@
 import { Provider } from 'react-redux';
 import './App.css';
-import MainContainer from './components/MainContainer';
 import store from './components/utils/appStore';
+import Body from './components/Body';
 
 function App() {
   return (
     <Provider store={store}>
     <>
-    <MainContainer/>
+    {/* <MainContainer/> */}
+    <Body/>
     </>
     </Provider>
       

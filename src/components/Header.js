@@ -9,23 +9,13 @@ import { useSelector } from "react-redux";
 import { toogleMenu } from "./utils/appSlice";
 import { FaCamera } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../utils/firebase";
-import { useEffect } from "react";
-import { addUser, removeUser } from "./utils/userSlice";
+import ProfileDropdown from "./profileDrop";
 
 const Header = () =>{
     const dispatch = useDispatch()
-    const navigate = useNavigate();
     const user = useSelector(store => store.user);
 
-    const handleSignOut = () => {
-        signOut(auth)
-          .then(() => {})
-          .catch((error) => {
-            navigate("/error");
-          });
-      };
+   
 
     const isMenuOpen = useSelector(state => state.app.isMenuOpen);
 
@@ -35,32 +25,7 @@ const Header = () =>{
           }, 100);
     }
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-          if (user) {
-            const { uid, email, displayName, photoURL } = user;
-            dispatch(
-              addUser({
-                uid: uid,
-                email: email,
-                displayName: displayName,
-                photoURL: photoURL,
-              })
-            );
-            navigate("/browse");
-          } else {
-            dispatch(removeUser());
-            navigate("/");
-          }
-        });
-    
-        // Unsubscribe when component unmounts
-        return () => unsubscribe();
-      }, []);
-    
-
-
-
+   
     return(
         <div className="bg-zinc-900 shadow-lg flex justify-between font-man">
             <div className="flex items-center p-2">
@@ -83,12 +48,13 @@ const Header = () =>{
 
             </div>
 
-            <div className="profile flex items-center m-2 gap-1">
+            {/* <div className="profile flex items-center m-2 gap-1">
                 <FaCircleUser style={{color:"#fff"}} />
                 <h2 className="text-white">My Profile</h2>
                 <FaCaretDown style={{color:"#fff"}} />
 
-            </div>
+            </div> */}
+            <ProfileDropdown/>
         </div>
 
 
