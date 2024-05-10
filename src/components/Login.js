@@ -77,10 +77,13 @@ const Login = () => {
     };
   
     return (
-      <div className="font-man bg-pink-500">
+      <div className="font-man">
+        <div className="logo m-2">
+                    <h1 className="font-bold text-black">secret<span className="bg-pink-500 text-white rounded-md p-1 m-1">desires</span></h1>
+        </div>
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="w-full md:w-3/12 absolute p-12 bg-black my-24 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80 mb-10"
+          className="w-full md:w-3/12 absolute p-12 bg-black my-18 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80 mb-10"
         >
           <h1 className="font-bold font-man text-3xl py-4">
             {isSignInForm ? 'Welcome back' : 'Register to Secret Desires'}
