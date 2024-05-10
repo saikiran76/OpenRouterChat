@@ -24,6 +24,7 @@ const Header = () =>{
             <div className="flex items-center p-2">
                 <div className="logo m-2">
                     <h1 className="font-bold text-white">secret<span className="bg-pink-500 text-white rounded-md p-1 m-1">desires</span></h1>
+                    {isMenuOpen && <p className="text-zinc-400 text-xs mt-1">Open beta</p>}
 
                     {!isMenuOpen && <div className="text-white mt-1 cursor-pointer" onClick={()=>toogleHandler()}><MdNavigateNext /></div>}
                     

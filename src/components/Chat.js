@@ -11,6 +11,7 @@ import OpenAI from "openai";
 import { OPENAI_KEY } from "./utils/constants";
 import { useRef } from "react";
 
+
 // openrouter configuration for fetching responses
 const openai = new OpenAI({
     baseURL: "https://openrouter.ai/api/v1",
@@ -68,7 +69,7 @@ const Chat = () => {
             <div key={index}>
               {renderProfile(msg.role)}
               <div
-                className={`mess ${msg.role === 'user' ? 'bg-gray-500' : 'bg-pink-600'} w-[50em] mx-auto rounded flex ${msg.role === 'user' ? 'mr-4' : 'ml-4'}`}
+                className={`mess ${msg.role === 'user' ? 'bg-gray-500' : 'bg-pink-600'} w-fit mx-auto rounded flex ${msg.role === 'user' ? 'mr-4' : 'ml-4'}`}
                 ref={index === responses.length - 1 ? lastMessageRef : null}
               >
                 <p className={`text-gray-200 p-6 text-sm`}>{msg.content}</p>
@@ -76,7 +77,7 @@ const Chat = () => {
             </div>
           ))}
     
-          <div className="chatbox mt-[13rem] w-[100%] flex items-center justify-center">
+          <div className="chatbox mt-[28rem] w-[100%] flex items-center justify-center">
             <form className="w-[70%]" onSubmit={
             (e)=>{e.preventDefault()}}>
                 <input

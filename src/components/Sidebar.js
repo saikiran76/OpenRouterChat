@@ -10,6 +10,8 @@ import { toogleMenu } from "./utils/appSlice";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FiTool } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
+import { Details } from "./utils/Details";
+import lady from "../lady_new.jpeg"
 
 const Sidebar = () =>{
     const dispatch = useDispatch()
@@ -44,16 +46,16 @@ const Sidebar = () =>{
                     <p className="font-man">invisibl</p>
             </div>
            
-            <img className="object-cover w-full h-[44%]" src="https://i.ytimg.com/vi/eKE6xpQ6hM4/maxresdefault.jpg" alt="jessica"/>
+            <img className="anderson object-cover h-[50%]" src={lady} alt="jessica"/>
 
-            <div className="name-tag absolute bottom-[18rem] text-transparent bg-gradient-to-b from-black to-transparent w-full p-5">
+            <div className="name-tag absolute bottom-[17rem] text-transparent bg-gradient-to-b from-black to-transparent w-full p-5">
                 <h1 className="text-white font-semibold text-lg font-man">Jessica Anderson</h1>
                 <p className="text-white text-xs font-man">@jessica-anderson-2</p>
 
             </div>
 
             <div className="pink bg-gradient-to-b from-pink-600 to-black h-[48%]">
-                <div className="m-2 bg-gray-900 flex justify-between rounded-xl font-man">
+                <div className="m-2 bg-gray-900 flex items-center justify-between rounded-xl font-man">
                     <div className="p-2 flex items-center gap-3 ">
                         <p className="flex text-white text-xs font-man"><span className="m-1"><FaCamera /></span>0</p>
                         <p className="flex text-white text-xs font-man"><span className="m-1"><LuMessageSquare /></span>0</p>
@@ -67,21 +69,19 @@ const Sidebar = () =>{
 
                 <div className="m-1 bg-gray-900 flex justify-between rounded-lg">
                     <div className="p-4">
-                        <h1 className="text-white font-bold text-base font-man">Who I am</h1>
-                        <h2 className="text-white text-base font-semibold font-man">Personality</h2>
-                        <h2 className="text-white text-sm font-man">care giver</h2>
-                        <h2 className="text-white text-base font-semibold font-man">Work</h2>
-                        <h2 className="text-white text-sm font-man">Yoga Instructor</h2>
-                        <h2 className="text-white text-base font-semibold font-man">Hobbies</h2>
-                        <h2 className="text-white text-sm font-man">Anime fan</h2>
-                        <h2 className="text-white text-base font-semibold font-man">Relationship</h2>
-                        <h2 className="text-white text-sm font-man">Friend</h2>
+                    <h1 className="text-white font-bold text-base font-man mb-2">Who I am</h1>
+                        {Details.map((item, index)=>(
+                            <div key={index}>
+                                <h2 className="text-white text-sm font-semibold font-man">{item.Question}</h2>
+                                <h2 className="text-white text-xs font-man mb-1">{item.Answer}</h2>
+                            </div>
+                        ))}
                     </div>
 
                     <div className="About p-4">
                         <div className="w-[12em]">
-                            <h1 className="font-bold flex justify-between items-center text-white font-man">About<FaEdit/></h1>
-                            <p className="text-white text-sm font-man">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <h1 className="font-bold flex justify-between items-center text-white font-man mb-2">About<FaEdit/></h1>
+                            <p className="text-white text-xs font-man">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                         </div>
                         
                     </div>
