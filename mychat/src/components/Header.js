@@ -3,14 +3,30 @@ import { FaCircleUser } from "react-icons/fa6";
 import { FaCaretDown } from "react-icons/fa";
 import { HiUsers } from "react-icons/hi";
 import { FaHeartCircleBolt } from "react-icons/fa6"
-
+import { MdNavigateNext } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { toogleMenu } from "./utils/appSlice";
 
 const Header = () =>{
+    const dispatch = useDispatch()
+    const isMenuOpen = useSelector(state => state.app.isMenuOpen);
+
+    const toogleHandler = ()=>{
+        setTimeout(() => {
+            dispatch(toogleMenu());
+          }, 100);
+    }
+
+
     return(
         <div className="bg-gray-900 shadow-lg flex justify-between font-man">
             <div className="flex items-center p-2">
                 <div className="logo m-2">
                     <h1 className="font-bold text-white">secret<span className="bg-pink-500 text-white rounded-md p-1 m-1">desires</span></h1>
+
+                    {!isMenuOpen && <div className="text-white mt-1 cursor-pointer" onClick={()=>toogleHandler()}><MdNavigateNext /></div>}
+                    
                 </div>
 
                 <div className="flex gap-6 items-center justify-center ml-[18em]">

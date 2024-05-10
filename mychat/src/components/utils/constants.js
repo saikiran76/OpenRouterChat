@@ -1,0 +1,1 @@
+export const OPENAI_KEY = process.env.REACT_APP_OPENROUTER_API_KEY;

@@ -4,13 +4,25 @@ import { LuMessageSquare } from "react-icons/lu";
 import { FaEdit } from "react-icons/fa";
 import { FaLock } from "react-icons/fa6";
 import { IoShareSocialSharp } from "react-icons/io5";
-
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { toogleMenu } from "./utils/appSlice";
 const Sidebar = () =>{
+    const dispatch = useDispatch()
+    const isMenuOpen = useSelector(state => state.app.isMenuOpen);
+    if(!isMenuOpen) return null;
+
+    const toogleHandler = ()=>{
+        setTimeout(() => {
+            dispatch(toogleMenu());
+          }, 100);
+    }
+
     return(
         <div className="relative h-screen w-[30em] bg-gray-700 border-pink-500 border-r-4 ">
             <div className="toolbar bg-black shadow-xl flex justify-between items-center h-[7%]">
                 <div className="p-2 flex items-center">
-                    <p className="text-white w-[5em] flex items-center font-man"><span className="m-1 text-white"><MdNavigateBefore /></span>Chats</p>
+                    <p className="text-white w-[5em] flex items-center font-man" onClick={()=>toogleHandler()}><span className="m-1 text-white cursor-pointer"><MdNavigateBefore /></span>Chats</p>
                     <p className="font-man">img:<span className="number ml-1 text-gray-300 font-man">3</span></p>
                     <p className="ml-2 text-white font-man">msg:</p>
                 </div>

@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import appSlice from "./appSlice";
-// import searchSlice from "./searchSlice";
+import openai from "./openai";
 // import chatSlice from "./chatSlice";
 
 
@@ -8,7 +8,7 @@ import appSlice from "./appSlice";
 const store = configureStore({
     reducer:{
         app: appSlice,
-        // search: searchSlice,
+        open: openai
         // chat: chatSlice
         
     }
