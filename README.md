@@ -1,5 +1,11 @@
 # SECRET DESIRES PROJECT
 
+## Overview
+
+This is a chat application built using React which makes use of `openRouter's API` and the model `gryphe/mythomist-7b:free`. Chat with Jessica about your interests and desires. 
+
+For more visit the official docs of OpenRouter: `https://openrouter.ai/docs#principles`
+
 ## Snaps of the project
 ![alt text](image.png)
 Desktop chat
