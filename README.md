@@ -12,6 +12,7 @@ For more visit the official docs of OpenRouter: `https://openrouter.ai/docs#prin
 ## Snaps of the project
 ![alt text](image.png)
 Desktop chat
+![alt text](image-1.png)
 
 ## Local Setup
 
