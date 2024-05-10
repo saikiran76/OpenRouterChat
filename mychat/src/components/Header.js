@@ -30,7 +30,7 @@ const Header = () =>{
                 </div>
 
                 <div className="flex gap-6 items-center justify-center ml-[18em]">
-                    <h2 className="border-pink-400 text-sm border-b-2 flex items-center text-white cursor-pointer"><span className="mr-2 "><BsChatRightDotsFill /></span>Chat</h2>   
+                    <h2 className="border-pink-400 text-sm border-b-2 flex items-center text-white cursor-pointer" onClick={()=>toogleHandler()}><span className="mr-2 "><BsChatRightDotsFill /></span>Chat</h2>   
                     <h2 className="border-pink-400 text-sm border-b-2 flex items-center text-white cursor-pointer w-[9em]"><span className="mr-2 "><HiUsers /></span>My Characters</h2>   
                     <h2 className="border-pink-400 text-sm border-b-2 flex items-center text-white cursor-pointer w-[9.5em]"><span className="mr-2 "><BsChatRightDotsFill /></span>Generate Images</h2>   
                     <h2 className="border-pink-400 bg-pink-600 rounded-md p-2 text-sm border-b-2 flex items-center text-white cursor-pointer w-[11em]"><span className="mr-2 "><FaHeartCircleBolt /></span>Create Character</h2>   
