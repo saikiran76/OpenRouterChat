@@ -63,7 +63,7 @@ const Chat = () => {
       };
 
       return (
-        <div className={`chat ${ !isMenuOpen && 'w-[100em]'} w-[70em] bg-gray-900 h-screen font-man overflow-y-auto`}>
+        <div className={`chat ${ !isMenuOpen && 'w-screen'} w-[70em] bg-gray-900 h-screen font-man overflow-y-auto`}>
           {responses.map((msg, index) => (
             <div key={index}>
               {renderProfile(msg.role)}
