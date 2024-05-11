@@ -5,16 +5,20 @@ import { signOut } from 'firebase/auth';
 import { auth } from './utils/firebase';
 import { removeUser } from './utils/userSlice';
 import { FaCaretDown } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const ProfileDropdown = () => {
   const dispatch = useDispatch();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
       dispatch(removeUser());
+      navigate('/')
+      
     } catch (error) {
       console.error('Logout failed', error);
     }
