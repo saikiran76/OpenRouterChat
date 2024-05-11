@@ -12,27 +12,24 @@ const ProfileDropdown = () => {
   const dispatch = useDispatch();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [chats, setChats] = useState([]);
-  const user = useSelector((state) => state.user);
+  const user = useSelector(state => state.user);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user && isDropdownOpen) {
+      loadMessages(user.uid, setChats);
+    }
+  }, [user, isDropdownOpen]);
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
       dispatch(removeUser());
-      navigate('/')
-      
+      navigate('/');
     } catch (error) {
       console.error('Logout failed', error);
     }
   };
-  
-  useEffect(()=>{
-    if(user && isDropdownOpen){
-      loadMessages(user.uid, setChats)
-    }
-  }, [user, isDropdownOpen])
-
-  // console.log("USER NAME>", user.displayName)
 
   return (
     <div className="relative">
@@ -47,14 +44,17 @@ const ProfileDropdown = () => {
       {user && isDropdownOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-zinc-800 text-white p-4 rounded-md shadow-lg">
           <p className="text-sm">Signed in as {user.email}</p>
-          <hr className="my-2" />
           <button onClick={handleLogout} className="block w-full text-left mt-2 text-pink-500">
             <FaSignOutAlt className="mr-2" /> Log Out
           </button>
-          <hr className='my-2'/>
-          {chats.map((chat, index)=>(
-            <p key={index}>{chat.content} ({chat.role})</p>
-          ))}
+          <hr className="my-2" />
+          <div className="chat-messages max-h-60 overflow-auto">
+            {chats.map((chat, index) => (
+              <div key={index} className={`message ${chat.role === 'user' ? 'user-message' : 'assistant-message'}`}>
+                <p className="text-sm p-2 rounded-lg">{chat.content}</p>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

@@ -12,7 +12,7 @@ import { OPENAI_KEY } from "./utils/constants";
 import { useRef } from "react";
 import { storeMessageInFirebase } from "./utils/chatHelper";
 import { database } from "./utils/firebase";
-import { ref, push, set, onValue } from 'firebase/database';
+import { ref, push, set, getDatabase } from 'firebase/database';
 
 
 
@@ -31,7 +31,7 @@ const Chat = () => {
     const [userInput, setUserInput] = useState('');
     const dispatch = useDispatch();
     const responses = useSelector((state) => state.open.responses);
-    const profile = useSelector((state) => state.user.photoURL);
+    // const profile = useSelector((state) => state.user.photoURL);
     const user = useSelector((state)=>state.user)
 
   
@@ -64,9 +64,14 @@ const Chat = () => {
       }, [responses]);
 
     const storeMesssage = (userId, message) =>{
+      const database = getDatabase();
       const messageRef = ref(database,  `chats/${userId}/messages`);
       const newMessageRef = push(messageRef);
-      set(newMessageRef, message);
+      set(newMessageRef, {
+        content: message.content,
+        role: message.role,
+        timestamp: Date.now(),
+      });
     }
 
       const renderProfile = (role) => {

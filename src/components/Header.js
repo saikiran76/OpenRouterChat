@@ -1,14 +1,11 @@
 import { BsChatRightDotsFill } from "react-icons/bs";
-import { FaCircleUser } from "react-icons/fa6";
-import { FaCaretDown } from "react-icons/fa";
 import { HiUsers } from "react-icons/hi";
 import { FaHeartCircleBolt } from "react-icons/fa6"
-import { MdMenu, MdNavigateNext } from "react-icons/md";
+import { MdMenu} from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { toogleMenu } from "./utils/appSlice";
 import { FaCamera } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import ProfileDropdown from "./profileDrop";
 
 const Header = () => {
@@ -16,7 +13,7 @@ const Header = () => {
     const isMenuOpen = useSelector(state => state.app.isMenuOpen);
     const toggleHandler = () => {
         setTimeout(() => {
-            dispatch(toogleMenu()); // Make sure toogleMenu is defined or imported correctly
+            dispatch(toogleMenu());  
         }, 100);
     };
 
@@ -31,7 +28,6 @@ const Header = () => {
                     <h1 className="font-bold text-white ml-2">secret<span className="bg-pink-500 text-white rounded-md px-1">desires</span></h1>
                 </div>
                 
-                {/* Navigation Links for larger screens */}
                 <div className="hidden sm:flex gap-6 items-center ml-4">
                     <h2 className="text-sm flex items-center text-white cursor-pointer" onClick={toggleHandler}>
                         <BsChatRightDotsFill className="mr-2" />Chat
@@ -48,7 +44,6 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* Profile Dropdown - Always visible */}
             <div className="flex items-center">
                 <ProfileDropdown/>
             </div>

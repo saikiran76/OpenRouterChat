@@ -6,7 +6,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "./utils/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "./utils/userSlice";
 import { USER_AVATAR } from "./utils/constants";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
+    const user = useSelector(store => store.user)
     const dispatch = useDispatch();
     const navigate = useNavigate(); 
   
@@ -39,10 +40,10 @@ const Login = () => {
                 const { uid, email, displayName, photoURL } = auth.currentUser;
                 dispatch(
                   addUser({
-                    uid,
-                    email,
-                    displayName,
-                    photoURL,
+                    uid: uid,
+                    email: email,
+                    displayName: displayName,
+                    photoURL: photoURL,
                   })
                 );
                 navigate('/Home'); // Redirect to home page after successful signup
@@ -59,7 +60,7 @@ const Login = () => {
         
             dispatch(
               addUser({
-                uid,
+                uid: uid,
                 email,
                 displayName,
                 photoURL,
