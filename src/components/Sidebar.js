@@ -25,7 +25,7 @@ const Sidebar = () =>{
     }
 
     return(
-        <div className="relative h-screen w-[45em] md:w-[30em] bg-gray-700 border-pink-500 border-r-4 overflow-hidden">
+        <div className="absolute md:relative h-screen w-[21em] md:w-[30em] bg-gray-700 border-pink-500 border-r-4 overflow-hidden">
             <div className="toolbar bg-black shadow-xl flex justify-between items-center h-[7%] text-xs ">
                 <div className="p-2 flex items-center">
                     <p className="text-white w-[5em] flex items-center font-man" onClick={()=>toogleHandler()}><span className="m-1 text-white cursor-pointer"><MdNavigateBefore /></span>Chats</p>
@@ -48,7 +48,7 @@ const Sidebar = () =>{
            
             <img className="anderson object-cover h-[50%]" src={lady} alt="jessica"/>
 
-            <div className="name-tag absolute bottom-[17rem] text-transparent bg-gradient-to-b from-black to-transparent w-full p-5">
+            <div className="name-tag absolute bottom-[23rem] md:bottom-[20rem] text-transparent bg-gradient-to-b from-black to-transparent w-full p-5">
                 <h1 className="text-white font-semibold text-lg font-man">Jessica Anderson</h1>
                 <p className="text-white text-xs font-man">@jessica-anderson-2</p>
 
