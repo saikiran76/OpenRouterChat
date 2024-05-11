@@ -37,7 +37,7 @@ const Sidebar = () =>{
                     <div className="text-white"><BsThreeDotsVertical/></div>
                     <div className="text-white"><FiTool/></div>
                     <div className="text-white"><FaEdit/></div>
-                    <div className="text-white"><IoMdClose/></div>
+                    <div className="text-white cursor-pointer" onClick={()=>toogleHandler()}><IoMdClose/></div>
 
                 </div>
                 
