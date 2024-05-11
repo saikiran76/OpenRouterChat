@@ -1,0 +1,25 @@
+{
+    "chats": {
+      "chat_id": {
+        "messages": {
+          "message_id": {
+            "role": "user/assistant",
+            "content": "Hello, how can I help you?",
+            "timestamp": "2021-09-01T23:28:56.782Z"
+          }
+        },
+        "participants": {
+          "user_id": true,
+          "assistant_id": true
+        },
+        "lastMessage": "Sample last message",
+        "lastUpdated": "2021-09-01T23:28:56.782Z"
+      }
+    },
+    "users": {
+      "user_id": {
+        "username": "exampleUser",
+        "email": "user@example.com"
+      }
+    }
+  }
