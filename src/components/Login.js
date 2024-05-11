@@ -109,8 +109,8 @@ const Login = () => {
             placeholder="Password"
             className="p-4 my-4 w-full bg-black"
           />
-          <p className="text-red-500 font-bold text-lg py-2">{errorMessage}</p>
-          <button className="p-4 my-6 bg-red-700 w-full rounded-lg" onClick={handleButtonClick}>
+          <p className="text-pink-500 font-bold text-lg py-2">{errorMessage}</p>
+          <button className="p-4 my-6 bg-pink-700 w-full rounded-lg" onClick={handleButtonClick}>
             {isSignInForm ? 'Sign In' : 'Sign Up'}
           </button>
           <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>

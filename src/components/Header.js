@@ -48,13 +48,9 @@ const Header = () =>{
 
             </div>
 
-            {/* <div className="profile flex items-center m-2 gap-1">
-                <FaCircleUser style={{color:"#fff"}} />
-                <h2 className="text-white">My Profile</h2>
-                <FaCaretDown style={{color:"#fff"}} />
-
-            </div> */}
-            <ProfileDropdown/>
+            <div className="flex justify-center items-center">
+                <ProfileDropdown/>
+            </div>
         </div>
 
 
