@@ -10,6 +10,8 @@ This is a chat application built using React which makes use of `openRouter's AP
 For more visit the official docs of OpenRouter: `https://openrouter.ai/docs#principles`
 
 ## Snaps of the project
+![alt text](image-2.png)
+Login to use the application
 ![alt text](image.png)
 Desktop chat
 ![alt text](image-1.png)
