@@ -3,7 +3,7 @@ import { FaCircleUser } from "react-icons/fa6";
 import { FaCaretDown } from "react-icons/fa";
 import { HiUsers } from "react-icons/hi";
 import { FaHeartCircleBolt } from "react-icons/fa6"
-import { MdNavigateNext } from "react-icons/md";
+import { MdMenu, MdNavigateNext } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { toogleMenu } from "./utils/appSlice";
@@ -11,50 +11,49 @@ import { FaCamera } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import ProfileDropdown from "./profileDrop";
 
-const Header = () =>{
-    const dispatch = useDispatch()
-    const user = useSelector(store => store.user);
-
-   
-
+const Header = () => {
+    const dispatch = useDispatch();
     const isMenuOpen = useSelector(state => state.app.isMenuOpen);
-
-    const toogleHandler = ()=>{
+    const toggleHandler = () => {
         setTimeout(() => {
-            dispatch(toogleMenu());
-          }, 100);
-    }
+            dispatch(toogleMenu()); // Make sure toogleMenu is defined or imported correctly
+        }, 100);
+    };
 
-   
-    return(
-        <div className="bg-zinc-900 shadow-lg flex justify-between font-man">
-            <div className="flex items-center p-2">
-                <div className="logo m-2">
-                    <h1 className="font-bold text-white">secret<span className="bg-pink-500 text-white rounded-md p-1 m-1">desires</span></h1>
-                    {isMenuOpen && <p className="text-zinc-400 text-xs mt-1">Open beta</p>}
-
-                    {!isMenuOpen && <div className="text-white mt-1 cursor-pointer" onClick={()=>toogleHandler()}><MdNavigateNext /></div>}
-                    
+    return (
+        <div className="bg-zinc-900 shadow-lg flex justify-between items-center font-man px-2 sm:px-4 py-1">
+            <div className="flex items-center">
+                {/* Logo and Mobile Menu Toggle */}
+                <div className="logo flex items-center mr-2">
+                    <button className="sm:hidden text-white" onClick={toggleHandler}>
+                        <MdMenu size={24} />
+                    </button>
+                    <h1 className="font-bold text-white ml-2">secret<span className="bg-pink-500 text-white rounded-md px-1">desires</span></h1>
                 </div>
-
-                <div className="flex gap-6 items-center justify-center ml-[18em]">
-                    <h2 className="border-pink-400 text-sm border-b-2 flex items-center text-white cursor-pointer" onClick={()=>toogleHandler()}><span className="mr-2 "><BsChatRightDotsFill /></span>Chat</h2>   
-                    <h2 className="text-sm flex items-center text-white cursor-pointer w-[9em]"><span className="mr-2 "><HiUsers /></span>My Characters</h2>   
-                    <h2 className="text-sm flex items-center text-white cursor-pointer w-[9.5em]"><span className="mr-2 "><FaCamera /></span>Generate Images</h2>   
-                    <h2 className="bg-pink-600 rounded-md p-2 text-sm flex items-center text-white cursor-pointer w-[11em]"><span className="mr-2 "><FaHeartCircleBolt /></span>Create Character</h2>   
-                    
-
+                
+                {/* Navigation Links for larger screens */}
+                <div className="hidden sm:flex gap-6 items-center ml-4">
+                    <h2 className="text-sm flex items-center text-white cursor-pointer" onClick={toggleHandler}>
+                        <BsChatRightDotsFill className="mr-2" />Chat
+                    </h2>
+                    <h2 className="text-sm flex items-center text-white cursor-pointer">
+                        <HiUsers className="mr-2" />My Characters
+                    </h2>
+                    <h2 className="text-sm flex items-center text-white cursor-pointer">
+                        <FaCamera className="mr-2" />Generate Images
+                    </h2>
+                    <h2 className="bg-pink-600 rounded-md px-2 py-1 text-sm flex items-center text-white cursor-pointer">
+                        <FaHeartCircleBolt className="mr-2" />Create Character
+                    </h2>
                 </div>
-
             </div>
 
-            <div className="flex justify-center items-center">
+            {/* Profile Dropdown - Always visible */}
+            <div className="flex items-center">
                 <ProfileDropdown/>
             </div>
         </div>
-
-
-    )
-}
+    );
+};
 
 export default Header;

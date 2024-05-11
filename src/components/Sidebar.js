@@ -25,7 +25,7 @@ const Sidebar = () =>{
     }
 
     return(
-        <div className="relative h-screen w-[30em] bg-gray-700 border-pink-500 border-r-4 overflow-hidden">
+        <div className="relative h-screen w-[45em] md:w-[30em] bg-gray-700 border-pink-500 border-r-4 overflow-hidden">
             <div className="toolbar bg-black shadow-xl flex justify-between items-center h-[7%] text-xs ">
                 <div className="p-2 flex items-center">
                     <p className="text-white w-[5em] flex items-center font-man" onClick={()=>toogleHandler()}><span className="m-1 text-white cursor-pointer"><MdNavigateBefore /></span>Chats</p>
@@ -62,17 +62,17 @@ const Sidebar = () =>{
                     </div>
 
                     <div>
-                        <h2 className="flex gap-2 text-white items-center text-sm p-2 font-man"><FaLock/>Make character public<IoShareSocialSharp /></h2>
+                        <h2 className="hidden md:flex lg:flex gap-2 text-white items-center text-sm p-2 font-man"><FaLock/>Make character public<IoShareSocialSharp /></h2>
                     </div>
         
                 </div>
 
-                <div className="m-1 bg-gray-900 flex justify-between rounded-lg">
+                <div className="m-1 bg-gray-900 flex justify-between rounded-lg ">
                     <div className="p-4">
-                    <h1 className="text-white font-bold text-base font-man mb-2">Who I am</h1>
+                    <h1 className="text-white font-bold text-xs md:text-base font-man mb-2">Who I am</h1>
                         {Details.map((item, index)=>(
                             <div key={index}>
-                                <h2 className="text-white text-sm font-semibold font-man">{item.Question}</h2>
+                                <h2 className="text-white text-xs md:text-sm font-semibold font-man">{item.Question}</h2>
                                 <h2 className="text-white text-xs font-man mb-1">{item.Answer}</h2>
                             </div>
                         ))}
@@ -80,8 +80,8 @@ const Sidebar = () =>{
 
                     <div className="About p-4">
                         <div className="w-[12em]">
-                            <h1 className="font-bold flex justify-between items-center text-white font-man mb-2">About<FaEdit/></h1>
-                            <p className="text-white text-xs font-man">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <h1 className="font-bold hidden md:flex justify-between items-center text-white font-man mb-2 text-xs md:text-base">About<FaEdit/></h1>
+                            <p className="text-white hidden md:block text-[0.5rem] md:text-xs font-man">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                         </div>
                         
                     </div>
