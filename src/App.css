@@ -22,3 +22,30 @@ body::-webkit-scrollbar-thumb {
 ::-webkit-scrollbar {
     width: 1em;
 }
+
+.message {
+    background-color: #f0f0f0; 
+    color: black;
+    margin: 0.5rem;
+    padding: 0.4rem;
+    border-radius: 10px;
+  }
+  
+.user-message {
+    background-color: #007bff; 
+    color: white;
+    text-align: right;
+}
+
+.assistant-message {
+    background-color: #e0e0e0; 
+    text-align: left;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 200px; 
+    overflow-y: scroll;
+}
