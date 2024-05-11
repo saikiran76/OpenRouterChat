@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaSignOutAlt } from 'react-icons/fa';
 import { signOut } from 'firebase/auth';
@@ -6,10 +6,12 @@ import { auth } from './utils/firebase';
 import { removeUser } from './utils/userSlice';
 import { FaCaretDown } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { loadMessages } from './utils/chatHelper';
 
 const ProfileDropdown = () => {
   const dispatch = useDispatch();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [chats, setChats] = useState([]);
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
 
@@ -23,6 +25,12 @@ const ProfileDropdown = () => {
       console.error('Logout failed', error);
     }
   };
+  
+  useEffect(()=>{
+    if(user && isDropdownOpen){
+      loadMessages(user.uid, setChats)
+    }
+  }, [user, isDropdownOpen])
 
   // console.log("USER NAME>", user.displayName)
 
@@ -43,6 +51,10 @@ const ProfileDropdown = () => {
           <button onClick={handleLogout} className="block w-full text-left mt-2 text-pink-500">
             <FaSignOutAlt className="mr-2" /> Log Out
           </button>
+          <hr className='my-2'/>
+          {chats.map((chat, index)=>(
+            <p key={index}>{chat.content} ({chat.role})</p>
+          ))}
         </div>
       )}
     </div>

@@ -1,5 +1,7 @@
 import { ref, push, set, onValue } from 'firebase/database';
-import { database } from './firebase';
+import { database} from './firebase';
+import { getDatabase } from 'firebase/database';
+import {app} from "./firebase"
 
 
 export const storeMessageInFirebase = (userId, message) => {
@@ -33,3 +35,13 @@ export const receiveMessages = (userId, setMessages) => {
       setMessages(parsedMessages);
     });
   };
+
+  export const loadMessages = (userId, callback) => {
+    const database = getDatabase(app);
+    const messagesRef = ref(database, `chats/${userId}/messages`);
+    onValue(messagesRef, (snapshot) => {
+        const messagesData = snapshot.val();
+        const messages = messagesData ? Object.values(messagesData) : [];
+        callback(messages);
+    });
+};
