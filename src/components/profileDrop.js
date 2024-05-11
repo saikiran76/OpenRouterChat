@@ -1,3 +1,8 @@
+/**
+ * Profile tab where users can view their recent chat history and logout from the session
+ */
+
+
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaSignOutAlt } from 'react-icons/fa';
@@ -33,19 +38,19 @@ const ProfileDropdown = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative hover:text-pink-500">
       <button
-        className="profile flex items-center m-2 gap-1"
+        className="profile flex items-center m-2 gap-1 hover:text-pink-500"
         onClick={() => setDropdownOpen(!isDropdownOpen)}
       >
         <FaSignOutAlt style={{ color: '#fff' }} />
-        <h2 className="text-white">{user && (user.displayName || 'My Profile')}</h2>
+        <h2 className="text-white hover:text-pink-500">{user && (user.displayName || 'My Profile')}</h2>
         <FaCaretDown style={{ color: '#fff' }} />
       </button>
       {user && isDropdownOpen && (
         <div className="absolute right-0 mt-2 bg-zinc-800 text-white p-4 rounded-md shadow-lg w-[25em]">
           <p className="text-xs flex items-center gap-2"><FaCircleUser style={{"color":"pink"}}/>{user.email}</p>
-          <button onClick={handleLogout} className="block w-full text-left mt-2 text-pink-500">
+          <button onClick={handleLogout} className="block w-full text-left mt-2 text-pink-500 hover:text-gray-300">
             <FaSignOutAlt className="mr-2" /> Log Out
           </button>
           <hr className="my-2" />

@@ -1,3 +1,7 @@
+/**
+ * Side bar to view details of the AI assistant Jessica
+ */
+
 import { MdNavigateBefore } from "react-icons/md";
 import { FaCamera } from "react-icons/fa";
 import { LuMessageSquare } from "react-icons/lu";
@@ -28,7 +32,7 @@ const Sidebar = () =>{
         <div className="absolute md:relative h-screen w-[21em] md:w-[30em] bg-gray-700 border-pink-500 border-r-4 overflow-hidden">
             <div className="toolbar bg-black shadow-xl flex justify-between items-center h-[7%] text-xs ">
                 <div className="p-2 flex items-center">
-                    <p className="text-white w-[5em] flex items-center font-man" onClick={()=>toogleHandler()}><span className="m-1 text-white cursor-pointer"><MdNavigateBefore /></span>Chats</p>
+                    <p className="text-white w-[5em] flex items-center font-man" onClick={()=>toogleHandler()}><span className="m-1 text-white cursor-pointer hover:text-pink-300"><MdNavigateBefore /></span>Chats</p>
                     <p className="font-man">img:<span className="number ml-1 text-gray-300 font-man">3</span></p>
                     <p className="ml-2 text-white font-man">msg:</p>
                 </div>
@@ -37,7 +41,7 @@ const Sidebar = () =>{
                     <div className="text-white"><BsThreeDotsVertical/></div>
                     <div className="text-white"><FiTool/></div>
                     <div className="text-white"><FaEdit/></div>
-                    <div className="text-white cursor-pointer" onClick={()=>toogleHandler()}><IoMdClose/></div>
+                    <div className="text-white cursor-pointer hover:text-pink-300" onClick={()=>toogleHandler()}><IoMdClose/></div>
 
                 </div>
                 

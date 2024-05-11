@@ -1,3 +1,9 @@
+/**
+ * Header component
+ */
+
+
+
 import { BsChatRightDotsFill } from "react-icons/bs";
 import { HiUsers } from "react-icons/hi";
 import { FaHeartCircleBolt } from "react-icons/fa6"
@@ -27,9 +33,9 @@ const Header = () => {
                     <h1 className="font-bold text-white ml-2">secret<span className="bg-pink-500 text-white rounded-md px-1">desires</span><span className="block text-[0.5em] text-gray-300">Open Beta</span></h1>
                     
                 </div>
-                {/* <p className="text-gray-300 text-[0.6rem] m-1 block">Open Beta</p> */}
+
                 <div className="hidden sm:flex gap-6 items-center ml-4">
-                    <h2 className="text-sm flex items-center text-white cursor-pointer" onClick={toggleHandler}>
+                    <h2 className="text-sm flex items-center text-white cursor-pointer border-pink-600 border-b-2 hover:border-pink-200 hover:text-pink-400" onClick={toggleHandler}>
                         <BsChatRightDotsFill className="mr-2" />Chat
                     </h2>
                     <h2 className="text-sm flex items-center text-white cursor-pointer">

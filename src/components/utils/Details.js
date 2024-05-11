@@ -1,3 +1,7 @@
+/**
+ * array of objects for assistant details
+ */
+
 export const Details = [{
     "Question":"Personality",
     "Answer": "care giver"

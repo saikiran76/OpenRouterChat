@@ -1,8 +1,15 @@
+/**
+ * Firebase helper functions for managing database operations
+ * To store the chats (both assistants and as well as the user's)
+ * To load up the stored chats on the profile tab to view the recent history of conversations
+ */
+
+
 import { ref, push, set, onValue } from 'firebase/database';
 import { database} from './firebase';
 import { getDatabase } from 'firebase/database';
 
-
+// helper for storing the conversations
 export const storeMessageInFirebase = (userId, message) => {
     const chatRef = ref(database, `chats/${userId}/messages`);
     const newMessageRef = push(chatRef);
@@ -13,28 +20,7 @@ export const storeMessageInFirebase = (userId, message) => {
     });
 };
 
-
-export const sendMessage = (userId, message) => {
-  const chatRef = ref(database, `chats/${userId}`);
-  const newMessageRef = push(chatRef);
-  set(newMessageRef, {
-    ...message,
-    timestamp: Date.now()
-  });
-};
-
-export const receiveMessages = (userId, setMessages) => {
-    const messagesRef = ref(database, `chats/${userId}`);
-    onValue(messagesRef, (snapshot) => {
-      const messages = snapshot.val();
-      const parsedMessages = messages ? Object.keys(messages).map(key => ({
-        ...messages[key],
-        id: key
-      })) : [];
-      setMessages(parsedMessages);
-    });
-  };
-
+// helper for loading up the conversations
 export const loadMessages = (userId, callback) => {
     const database = getDatabase();
     const messagesRef = ref(database, `chats/${userId}/messages`);

@@ -1,3 +1,8 @@
+/**
+ * Login/ Signup form for the user to login or register to the Secret Desires chat app 
+ * Integrated Firebase as auth and database for user details management
+ */
+
 import { useState, useRef } from "react";
 import { checkValidData } from "./utils/validate";
 import {
