@@ -80,8 +80,8 @@ const Sidebar = () =>{
 
                     <div className="About p-4">
                         <div className="w-[12em]">
-                            <h1 className="font-bold hidden md:flex justify-between items-center text-white font-man mb-2 text-xs md:text-base">About<FaEdit/></h1>
-                            <p className="text-white hidden md:block text-[0.5rem] md:text-xs font-man">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            <h1 className="font-bold flex justify-between items-center text-white font-man mb-2 text-xs md:text-base">About<FaEdit/></h1>
+                            <p className="text-white md:block text-[0.5rem] md:text-xs font-man">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                         </div>
                         
                     </div>
