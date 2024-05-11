@@ -10,6 +10,9 @@ import { addResponses } from "./utils/openai";
 import OpenAI from "openai";
 import { OPENAI_KEY } from "./utils/constants";
 import { useRef } from "react";
+import { storeMessageInFirebase } from "./utils/chatHelper";
+import { database } from "./utils/firebase";
+import { ref, push, set, onValue } from 'firebase/database';
 
 
 
@@ -29,6 +32,8 @@ const Chat = () => {
     const dispatch = useDispatch();
     const responses = useSelector((state) => state.open.responses);
     const profile = useSelector((state) => state.user.photoURL);
+    const user = useSelector((state)=>state.user)
+
   
     const lastMessageRef = useRef(null);
     const isMenuOpen = useSelector(store => store.app.isMenuOpen)
@@ -38,6 +43,7 @@ const Chat = () => {
   
       const userMessage = { role: 'user', content: userInput };
       dispatch(addResponses([userMessage]));
+      storeMessageInFirebase(user.uid, userMessage)
   
       const completion = await openai.chat.completions.create({
         model: "gryphe/mythomist-7b:free",
@@ -46,6 +52,7 @@ const Chat = () => {
   
       const aiMessage = { role: 'assistant', content: completion.choices[0].message.content };
       dispatch(addResponses([aiMessage]));
+      storeMessageInFirebase(user.uid, aiMessage)
   
       setUserInput('');
     };
@@ -55,6 +62,12 @@ const Chat = () => {
           lastMessageRef.current.scrollIntoView({ behavior: 'smooth' });
         }
       }, [responses]);
+
+    const storeMesssage = (userId, message) =>{
+      const messageRef = ref(database,  `chats/${userId}/messages`);
+      const newMessageRef = push(messageRef);
+      set(newMessageRef, message);
+    }
 
       const renderProfile = (role) => {
         const isUser = role === 'user';

@@ -1,5 +1,17 @@
-import { ref, push, set } from 'firebase/database';
+import { ref, push, set, onValue } from 'firebase/database';
 import { database } from './firebase';
+
+
+export const storeMessageInFirebase = (userId, message) => {
+    const chatRef = ref(database, `chats/${userId}/messages`);
+    const newMessageRef = push(chatRef);
+    set(newMessageRef, {
+      content: message.content,
+      role: message.role,
+      timestamp: Date.now(),
+    });
+};
+
 
 export const sendMessage = (userId, message) => {
   const chatRef = ref(database, `chats/${userId}`);
@@ -9,3 +21,15 @@ export const sendMessage = (userId, message) => {
     timestamp: Date.now()
   });
 };
+
+export const receiveMessages = (userId, setMessages) => {
+    const messagesRef = ref(database, `chats/${userId}`);
+    onValue(messagesRef, (snapshot) => {
+      const messages = snapshot.val();
+      const parsedMessages = messages ? Object.keys(messages).map(key => ({
+        ...messages[key],
+        id: key
+      })) : [];
+      setMessages(parsedMessages);
+    });
+  };
