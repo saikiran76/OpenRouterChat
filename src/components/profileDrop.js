@@ -20,7 +20,7 @@ const ProfileDropdown = () => {
     }
   };
 
-  console.log("USER NAME>", user.displayName)
+  // console.log("USER NAME>", user.displayName)
 
   return (
     <div className="relative">
@@ -29,10 +29,10 @@ const ProfileDropdown = () => {
         onClick={() => setDropdownOpen(!isDropdownOpen)}
       >
         <FaSignOutAlt style={{ color: '#fff' }} />
-        <h2 className="text-white">{user.displayName || 'My Profile'}</h2>
+        <h2 className="text-white">{user && (user.displayName || 'My Profile')}</h2>
         <FaCaretDown style={{ color: '#fff' }} />
       </button>
-      {isDropdownOpen && (
+      {user && isDropdownOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-zinc-800 text-white p-4 rounded-md shadow-lg">
           <p className="text-sm">Signed in as {user.email}</p>
           <hr className="my-2" />

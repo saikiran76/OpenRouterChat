@@ -15,7 +15,7 @@ const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
     const dispatch = useDispatch();
-    const navigate = useNavigate(); // Import the useNavigate hook
+    const navigate = useNavigate(); 
   
     const name = useRef(null);
     const email = useRef(null);
@@ -65,8 +65,8 @@ const Login = () => {
                 photoURL,
               })
             );
-            console.log('User etails: ', displayName);
-            navigate('/Home'); // Redirect to home page after successful login
+            // console.log('User etails: ', displayName);
+            navigate('/Home');
           })
           .catch((error) => setErrorMessage(`${error.code} - ${error.message}`));
       }
