@@ -12,6 +12,7 @@ import { OPENAI_KEY } from "./utils/constants";
 import { useRef } from "react";
 import { storeMessageInFirebase } from "./utils/chatHelper";
 import { ref, push, set, getDatabase } from 'firebase/database';
+import profile from "../assets/Gojo.jpg"
 
 
 
@@ -79,7 +80,7 @@ const Chat = () => {
         <div className={`flex items-center gap-2 ${isUser ? 'justify-end' : 'justify-start'} m-4`}>
           {isUser?<div className={`${isUser ? 'order-2' : 'order-1'} rounded-[10em] w-[30%] flex justify-end items-center gap-2`}>
             <p className="text-white text-sm block">Cutie</p>
-            <img className="rounded-[10em] w-[20%]" src="https://lh3.googleusercontent.com/proxy/d1jMyszcGEhmvSgVUWJHeDOSufTCpVRKO-O_6d-1ros2M3YJLw8xsRZQIFm9K7XknWHaJnVA4RAa8rLwDeH9tiAFXuOMNmaX2yEvQAElp18xH2wz_uo_3RBnb7kvvdY0FSAk" alt="profile"/>
+            <img className="rounded-[10em] w-[20%]" src={profile} alt="profile"/>
           </div>:<FaCircleUser className={`${!isUser ? 'order-2' : 'order-1'} text-white`} />}
           <p className={`${isUser ? '' : 'order-2'} text-white text-sm block`}>{isUser ? '' : 'Jessica'}</p>
         </div>
